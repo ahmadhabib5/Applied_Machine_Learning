@@ -54,34 +54,36 @@ Jika diperhatikan terdapat kolom yang belum berdistribusi normal (berbentuk miri
 Untuk menjaga agar tidak terjadi data leakage, makan proses train test split dijadikan sebelum proses handling missing values, transformasi dan normalisasi. Proporsi data train sebesar 80% dan test sebesar 20%.
 
 # Modeling & Evaluation
-Seperti yang sudah dijelaskan sebelumnya, pada proyek kali ini akan menggunakan pipeline seperti dibawah ini, selain itu training langsung dilakukan hyperparameterituning dengan RandomizedSearch: <br>
-![](image/pipeline1.png) <br>
-- Strategi pertama
-Buat model menggunakan parameter seperti dibawah ini dan *metric* yang digunakan adalah *accuracy* <br>
+Seperti yang sudah dijelaskan sebelumnya, pada proyek kali ini akan menggunakan pipeline seperti dibawah ini, selain itu training langsung dilakukan hyperparameterituning dengan RandomizedSearch: 
+![](image/pipeline1.png) 
+
+#### Strategi pertama
+>Buat model menggunakan parameter seperti dibawah ini dan *metric* yang digunakan adalah *accuracy* 
 ![](image/param1.png)
-*accuracy* yang didapat sangat tinggi yakni 95% untuk data testing. Eittts tunggu dulu, pada proses visualisasi sebelumnya terlewat untuk mengecek data target dan ternyata jumlah target tidak seimbang. Untuk mengukur performa dari model gunakan *confusion matrix* seperti sebagai berikut: <br>
-![](image/cm1.jpg) <br>
-![](image/cm1_1.jpg) <br>
+*accuracy* yang didapat sangat tinggi yakni 95% untuk data testing. Eittts tunggu dulu, pada proses visualisasi sebelumnya terlewat untuk mengecek data target dan ternyata jumlah target tidak seimbang. Untuk mengukur performa dari model gunakan *confusion matrix* seperti sebagai berikut: 
+![](image/cm1.jpg) 
+![](image/cm1_1.jpg)
 Jika dilihat ternyata model salah semua dalam memprediksi pasien positif (`nilai kanan bawah = 0`), oleh karenanya coba lakukan pembobotan dan gunakan scoring dengan f1-score
-- Strategi dua
-Lakukan pembobotan dengan memberatkan bobot pada kelas positif stroke. Untuk nilai dari bobot akan digunakan randomizedsearch lagi dengan parameter yang akan dituning sebagai berikut:
+#### Strategi dua
+>Lakukan pembobotan dengan memberatkan bobot pada kelas positif stroke. Untuk nilai dari bobot akan digunakan randomizedsearch lagi dengan parameter yang akan dituning sebagai berikut:
 ![](image/param2.jpg)
 pembobotan bebisa dilihat pada algo__class_weight yang artinya {0: 0.05, 1: 0.95}, {0: 0.1, 1: 0.9}, {0: 0.25, 1: 0.75}. Dan hasil training menunjukan *confusion matrix* sebagai berikut:
 ![](image/cm2.jpg)
 `Dengan melakukan pembobotan prediksi pada data test menjadi lebih baik walau masih banyak salah prediksi`
 
-- Strategi empat
-Strategi keempat ialah dengan melakukan teknik resampling, teknik resampling merupakan pembuatan data dummy dengan algoritma tertentu, pada proyek kali ini akan digunakan algoritma SMOTE yang berdasarkan pada algoritma KNN, jika tertarik topik dapat mengunjungin tautan [berikut](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/).
+#### Strategi tiga
+> Strategi ketiga ialah dengan melakukan teknik resampling, teknik resampling merupakan pembuatan data dummy dengan algoritma tertentu, pada proyek kali ini akan digunakan algoritma SMOTE yang berdasarkan pada algoritma KNN, jika tertarik topik dapat mengunjungin tautan [berikut](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/).
 Pada strategi keempat ini dilakukan 2 percobaan yang pertama masih dengan parameter sebelumnya, yang kedua parameter tetanggan terdekat dari algoritma smoke juga ikut ditunning serta menggunakan *recall* sebagai *metric*. 
-    ##### Percobaan 1  
+##### Percobaan 1  
 ![](image/cm3.jpg)
-    ##### Percobaan 2
+##### Percobaan 2
 ![](image/cm4.jpg)
-    Mengapa menggunakan *recall* jika diperhatikan pada rumus dibawah ini, untuk mengecilkan false negatif (salah dalam memprediksi pasien positif, metrics yang cocok adalah recall.
-    ##### *Metric classification*
+>Mengapa menggunakan *recall* jika diperhatikan pada rumus dibawah ini, untuk mengecilkan false negatif (salah dalam memprediksi pasien positif, metrics yang cocok adalah recall.
+*Metric classification : *
 ![](image/metrics_clf.jpg)
+
 # Kesimpulan
-Kasus imbalance masih menjadi topik yang diperbincangkan, salah satu cara menangainya dengan membuat data *dummy* untuk dijadikan data training. Pada kasus kasus tertentu seperti deteksi penyakit akan lebih baik jika model salah dalam memprediksi pasien negatif (aslinya negatif diprediksi positif) dari pada aslinya positif tetapi diprediksi negatif. Namun kembali lagi pada keputusan klien atau pihak berkepentingan. Dan cara yang paling efektif untuk menangain masalah ini adalah dengan memperbanyak sample dan **`jangan`** ***`imbalance`***
+>Kasus imbalance masih menjadi topik yang diperbincangkan, salah satu cara menangainya dengan membuat data *dummy* untuk dijadikan data training. Pada kasus kasus tertentu seperti deteksi penyakit akan lebih baik jika model salah dalam memprediksi pasien negatif (aslinya negatif diprediksi positif) dari pada aslinya positif tetapi diprediksi negatif. Namun kembali lagi pada keputusan klien atau pihak berkepentingan. Dan cara yang paling efektif untuk menangain masalah ini adalah dengan memperbanyak sample dan **`jangan`** ***`imbalance`***
 ### *Referensi*
 1. [Dicoding](https://www.dicoding.com/academies/319/tutorials/16979?from=17053)
 2. [Scikit-learn documentation](https://scikit-learn.org/)
