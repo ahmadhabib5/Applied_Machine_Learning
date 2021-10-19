@@ -18,7 +18,7 @@ Kesehatan merupakan salah satu masalah umum yang telah ditetapkan dalam SDG(*Sus
 - #### Metodologi
     Prediksi seseorang positif stroke atau tidak merupakan tujuan dari utama yang ingin diselesaikan, potitif atau tidak (negatif) merupakan variabel diskrit yang berarti pada kasus ini merupakan persoalan klasifikasi. Oleh karena itu, metodologi pada proyek ini adalah: membangun model klasifikasi positif negatif stroke.
 
-### Data Understanding
+# Data Understanding
 ![](image/source.png)
 informasi data set : 
 Attribute  | Keterangan
