@@ -8,11 +8,9 @@ Kesehatan merupakan salah satu masalah umum yang telah ditetapkan dalam SDG(*Sus
 # Bussines Understanding
 ### Problem Statement
 - Bagaimana cara membuat model *machine learning* untuk memprediksi seseorang positif stroke atau tidak
-- Feature apa saja yang sangat berpengaruh terhadap prediksi seseorang positif stroke atau tidak
 
 ### Goals
 - Membuat model *machine learning* untuk memprediksi seseorang positif stroke atau tidak
-- Mengetahui feature apa saja yang sangat berpengaruh terhadap prediksi seseorang positif stroke atau tidak
 
 ### Solution Statements
 - #### Metodologi
@@ -66,7 +64,7 @@ Jika dilihat ternyata model salah semua dalam memprediksi pasien positif (`nilai
 #### Strategi dua
 Lakukan pembobotan dengan memberatkan bobot pada kelas positif stroke. Untuk nilai dari bobot akan digunakan randomizedsearch lagi dengan parameter yang akan dituning sebagai berikut:
 <br/>![](image/param2.png)<br/>
-pembobotan bebisa dilihat pada algo__class_weight yang artinya {0: 0.05, 1: 0.95}, {0: 0.1, 1: 0.9}, {0: 0.25, 1: 0.75}. Dan hasil training menunjukan *confusion matrix* sebagai berikut:
+pembobotan bisa dilihat pada algo__class_weight yang artinya {0: 0.05, 1: 0.95}, {0: 0.1, 1: 0.9}, {0: 0.25, 1: 0.75}. Dan hasil training menunjukan *confusion matrix* sebagai berikut:
 <br/>![](image/cm2.png)<br/>
 `Dengan melakukan pembobotan prediksi pada data test menjadi lebih baik walau masih banyak salah prediksi`
 
@@ -78,8 +76,8 @@ Pada strategi keempat ini dilakukan 2 percobaan yang pertama masih dengan parame
 ##### Percobaan 2
 <br/>![](image/cm4.png)<br/>
 Mengapa menggunakan *recall* jika diperhatikan pada rumus dibawah ini, untuk mengecilkan false negatif (salah dalam memprediksi pasien positif, metrics yang cocok adalah recall.
-<br/>*Metric classification:*
-![](image/metrics_clf.png)
+<br/>*Metric classification:*<br/>
+<br/>![](image/metrics_clf.png)<br/>
 
 # Kesimpulan
 Kasus imbalance masih menjadi topik yang diperbincangkan, salah satu cara menangainya dengan membuat data *dummy* untuk dijadikan data training. Pada kasus kasus tertentu seperti deteksi penyakit akan lebih baik jika model salah dalam memprediksi pasien negatif (aslinya negatif diprediksi positif) dari pada aslinya positif tetapi diprediksi negatif. Namun kembali lagi pada keputusan klien atau pihak berkepentingan. Dan cara yang paling efektif untuk menangain masalah ini adalah dengan memperbanyak sample dan **`jangan`** ***`imbalance`***
