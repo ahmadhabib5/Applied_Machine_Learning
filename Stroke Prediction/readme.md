@@ -19,7 +19,7 @@ Kesehatan merupakan salah satu masalah umum yang telah ditetapkan dalam SDG(*Sus
     Prediksi seseorang positif stroke atau tidak merupakan tujuan dari utama yang ingin diselesaikan, potitif atau tidak (negatif) merupakan variabel diskrit yang berarti pada kasus ini merupakan persoalan klasifikasi. Oleh karena itu, metodologi pada proyek ini adalah: membangun model klasifikasi positif negatif stroke.
 
 # Data Understanding
-![](image/source.png)
+<br/>![](image/source.png)<br/>
 informasi data set : 
 Attribute  | Keterangan
 ------------- | -------------
@@ -38,17 +38,17 @@ Stroke | satu jika pasien positif stroke nol sebaliknya
 
 # Pra-pemrosesan
 ### 1. Visualisasi data kategorical dan hapus invalid data
-![](image/categorical.png)
+<br/>![](image/categorical.png)<br/>
 Hapus invalid data pada kolom gender (**other**) dan kolom status merokok (**Unknown**) menjadi seperti berikut:
-![](image/categorical2.png)
+<br/>![](image/categorical2.png)<br/>
 ### 2. Visualisasi data numerik dan menghapus pencilan dengan IQR method
 Pada tahap ini data numeric divisualisasikan dengan boxplot untuk mendeteksi pencilan.
-![](image/numeric1.png)
+<br/>![](image/numeric1.png)<br/>
 Pencilan dapat dihapus dengan berbagai cara, namun pada proyek kali ini akan digunakan IQR method, simplenya syarat bukan outlier adalah ~(data < (Q1-1.5 x IQR)) atau (data > (Q3+1.5 x IQR)). Tanda ~ artinya negasi berarti data yang berapa diantara  (Q1-1.5 x IQR)) dan (data > (Q3+1.5 x IQR)) bukan outlier.
-![](image/numeric2.png)
+<br/>![](image/numeric2.png)<br/>
 Jika dilihat masih cukup banyak outlier, namun pada proyek kali ini akan diabaikan.
 ### 3. Visualisasi distribusi kolom numerik
-![](image/numeric3.png)
+<br/>![](image/numeric3.png)<br/>
 Jika diperhatikan terdapat kolom yang belum berdistribusi normal (berbentuk mirip lonceng). Hal tersebut dapat diatasi dengan melakukan transformasi. Pada proyek kali ini akan menggunakan transformasi yeo-johnson. [Yeo-johnson](https://en.wikipedia.org/wiki/Power_transform) adalah teknik transformasi data yang digunakan untuk menstabilkan varians, membuat data lebih seperti distribusi normal, meningkatkan validitas ukuran asosiasi (seperti korelasi Pearson antar variabel), dan untuk prosedur stabilisasi data lainnya. Untuk praktek transformasi pada proyek ini menggunakan pipeline dari [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) sehingga hasil dari transformasi tidak dapat divisualisasikan.
 ### 4. Split data
 Untuk menjaga agar tidak terjadi data leakage, makan proses train test split dijadikan sebelum proses handling missing values, transformasi dan normalisasi. Proporsi data train sebesar 80% dan test sebesar 20%.
@@ -57,17 +57,17 @@ Untuk menjaga agar tidak terjadi data leakage, makan proses train test split dij
 Seperti yang sudah dijelaskan sebelumnya, pada proyek kali ini akan menggunakan pipeline seperti dibawah ini, selain itu training langsung dilakukan hyperparameterituning dengan RandomizedSearch: 
 <br/>![](image/pipeline1.png) 
 #### Strategi pertama
-Buat model menggunakan parameter seperti dibawah ini dan *metric* yang digunakan adalah *accuracy* <br/>
-![](image/param1.png) <br/>
+Buat model menggunakan parameter seperti dibawah ini dan *metric* yang digunakan adalah *accuracy* 
+<br/>![](image/param1.png) <br/>
 *accuracy* yang didapat sangat tinggi yakni 95% untuk data testing. Eittts tunggu dulu, pada proses visualisasi sebelumnya terlewat untuk mengecek data target dan ternyata jumlah target tidak seimbang. Untuk mengukur performa dari model gunakan *confusion matrix* seperti sebagai berikut: 
 <br/>![](image/cm1.jpg) <br/>
-![](image/cm1_1.png) <br/>
+<br/>![](image/cm1_1.png) <br/>
 Jika dilihat ternyata model salah semua dalam memprediksi pasien positif (`nilai kanan bawah = 0`), oleh karenanya coba lakukan pembobotan dan gunakan scoring dengan f1-score
 #### Strategi dua
 Lakukan pembobotan dengan memberatkan bobot pada kelas positif stroke. Untuk nilai dari bobot akan digunakan randomizedsearch lagi dengan parameter yang akan dituning sebagai berikut:
-![](image/param2.png)
+<br/>![](image/param2.png)<br/>
 pembobotan bebisa dilihat pada algo__class_weight yang artinya {0: 0.05, 1: 0.95}, {0: 0.1, 1: 0.9}, {0: 0.25, 1: 0.75}. Dan hasil training menunjukan *confusion matrix* sebagai berikut:
-<br/>![](image/cm2.png)
+<br/>![](image/cm2.png)<br/>
 `Dengan melakukan pembobotan prediksi pada data test menjadi lebih baik walau masih banyak salah prediksi`
 
 #### Strategi tiga
@@ -76,9 +76,9 @@ Pada strategi keempat ini dilakukan 2 percobaan yang pertama masih dengan parame
 ##### Percobaan 1  
 <br/>![](image/cm3.png)
 ##### Percobaan 2
-<br/>![](image/cm4.png)
+<br/>![](image/cm4.png)<br/>
 Mengapa menggunakan *recall* jika diperhatikan pada rumus dibawah ini, untuk mengecilkan false negatif (salah dalam memprediksi pasien positif, metrics yang cocok adalah recall.
-*Metric classification:*
+<br/>*Metric classification:*
 ![](image/metrics_clf.png)
 
 # Kesimpulan
