@@ -235,7 +235,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini merupakan rata-rata harmonik dari precission dan recall. Untuk menghitung nilai dari *f1-score* dapat dilihat pada formula dibawah ini.
 
-  <img src="image/f1_Score.png" style="zoom: 40%;" />
+  <img src="image/f1_score.png" style="zoom: 40%;" />
 
 1. [Dicoding](https://www.dicoding.com/academies/319/tutorials/16979?from=17053)
 2. [Scikit-learn documentation](https://scikit-learn.org/)
