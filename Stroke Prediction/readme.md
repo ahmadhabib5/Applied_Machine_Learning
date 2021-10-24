@@ -67,7 +67,10 @@ Smoking status | merupakan status apakah pasien formerly smoked (Sebelumnya mero
 Stroke | merupakan variabel target yang berisi status pasien apakah stroke atau tidak. satu jika pasien positif strokedan dan nol untuk sebaliknya
 
 Berikut rangkuman `statistik deskriptif` dari fitur dalam dataset:
+
 <img src="image/ssd_numeric.png" style="zoom:150%;" />
+
+
 
 <img src="image/ssd_categoric.png" style="zoom:150%;" />
 
