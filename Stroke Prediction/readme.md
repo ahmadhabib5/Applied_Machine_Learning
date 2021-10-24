@@ -219,7 +219,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini mengukur tingkat ketepatan antara informasi yang diminta oleh pengguna dengan jawaban yang diberikan oleh sistem. Untuk menghitung nilai dari *precision* dapat dilihat pada formula dibahwah ini.
 
-  [![](image\precision.png)](https://bangdavid.blogspot.com/2017/10/pengertian-precision-recall-accuracy.html)
+  ![](image\precision.png)
 
   Metriks ini hanya berfokus pada peforma  model dalam memprediksi terhadap label data positif.
 
@@ -227,7 +227,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini mengukur tingkat keberhasilan sistem dalam menemukan kembali sebuah informasi. Untuk menghitung nilai dari recall dapat dilihat pada formula dibawah ini.
 
-  [![](image\recall.png)](https://bangdavid.blogspot.com/2017/10/pengertian-precision-recall-accuracy.html)
+  ![](image\recall.png)
 
   Tidak seperti precision yang hanya meperhitungkan label positif, metriks ini menghitung bagian negatif dari prediksi label positif. 
 
@@ -235,9 +235,8 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini merupakan rata-rata harmonik dari precission dan recall. Untuk menghitung nilai dari *f1-score* dapat dilihat pada formula dibawah ini.
 
-  [<img src="image\f1_Score.png" style="zoom:50%;" />](https://bangdavid.blogspot.com/2017/10/pengertian-precision-recall-accuracy.html)
+  <img src="image\f1_Score.png" style="zoom:50%;" />
 
-### *Referensi*
 1. [Dicoding](https://www.dicoding.com/academies/319/tutorials/16979?from=17053)
 2. [Scikit-learn documentation](https://scikit-learn.org/)
 3. [Imbalanced-learn documentation](https://imbalanced-learn.org/stable/)
