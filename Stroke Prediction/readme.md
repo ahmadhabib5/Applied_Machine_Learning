@@ -209,7 +209,7 @@ Pada proyek ini model dibuat untuk mengklasifikasikan pasien postitif atau negat
 
 Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true negative*, *false positive* dan *false negative*. Untuk lebih jelasnya perhatikan gambar dibawah ini.
 
-<img src="D:\Pemrograman\Python\Applied_Machine_Learning\Stroke Prediction\image\cm1.jpg" style="zoom:50%;" />
+<img src="image\cm1.jpg" style="zoom:50%;" />
 
 - *Accuracy*
 
@@ -219,7 +219,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini mengukur tingkat ketepatan antara informasi yang diminta oleh pengguna dengan jawaban yang diberikan oleh sistem. Untuk menghitung nilai dari *precision* dapat dilihat pada formula dibahwah ini.
 
-  ![](image\precision.png)
+  <img src="image\precision.png" style="zoom:80%;" />
 
   Metriks ini hanya berfokus pada peforma  model dalam memprediksi terhadap label data positif.
 
@@ -227,7 +227,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini mengukur tingkat keberhasilan sistem dalam menemukan kembali sebuah informasi. Untuk menghitung nilai dari recall dapat dilihat pada formula dibawah ini.
 
-  ![](image\recall.png)
+  <img src="image\recall.png" style="zoom:80%;" />
 
   Tidak seperti precision yang hanya meperhitungkan label positif, metriks ini menghitung bagian negatif dari prediksi label positif. 
 
@@ -235,7 +235,7 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
 
   *Metrics* ini merupakan rata-rata harmonik dari precission dan recall. Untuk menghitung nilai dari *f1-score* dapat dilihat pada formula dibawah ini.
 
-  <img src="image\f1_Score.png" style="zoom:50%;" />
+  <img src="image\f1_Score.png" style="zoom: 50%;" />
 
 1. [Dicoding](https://www.dicoding.com/academies/319/tutorials/16979?from=17053)
 2. [Scikit-learn documentation](https://scikit-learn.org/)
