@@ -147,7 +147,7 @@ Setelah melakukan tahapan *preprocessing* makan data telah siap dimasukan kedala
   max_features | Jumlah maksimum dari fitur | Bilangan asli 0.1 hingga 1 
   min_samples_leaf | Minimum nilai dalam pohon, jika nilai kurang dari nilai minimum maka tidak menambah kedalaman | Bilangan Bulat 1 hingga 20 
   
-  Hasil yang didapat memberikan nilai *f1-score* 69 persen pada data latih dan 0 pada data testing, dan berikut *confusion matrix* dari model pertama ini.
+  Hasil yang didapat memberikan nilai *f1-score* 69 persen pada data latih dan 0 persen pada data testing, dan berikut *confusion matrix* dari model pertama ini.
   
   <img src="image\confusion_matrix1.png" style="zoom: 80%;" />
   
@@ -237,6 +237,8 @@ Dalam *confusion matrix* terdapat empat nilai, yakni *true positive*,  *true neg
   *Metrics* ini merupakan rata-rata harmonik dari precission dan recall. Untuk menghitung nilai dari *f1-score* dapat dilihat pada formula di bawah ini.
 
   <img src="image/f1_score.png" style="zoom: 40%;" />
+  
+  Berdasarkan kasus pada proyek ini, *metric*yang digunakan adalah recall karena *recall* dapat mengecilkan *false negatif* sehingga model yang pilih adalah 'model_4' dengan recall_Score sebesar 85 persen.
 
 1. [Dicoding](https://www.dicoding.com/academies/319/tutorials/16979?from=17053)
 2. [Scikit-learn documentation](https://scikit-learn.org/)
