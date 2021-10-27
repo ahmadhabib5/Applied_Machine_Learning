@@ -78,7 +78,7 @@ Berikut `Visualisasi` tiap kolom :
 
   Tahapan ini bertujuan agar model yang dilatih dapat diuji dengan data yang berbeda dari data yang digunakan dalam pelatihan. Data dapat dibagi menjadi dua atau tiga, pada proyek ini data dibagi menjadi dua dengan persentase untuk *training* sebesar 80% dan sisanya 20% untuk testing. Fungsi [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) pada library sklearn yang akan digunakan untuk menangani tahapan ini.
 
-- Mengatasi data kosong
+- Mengatasi data kosong <br>
 
   <img src="image\mv.png" style="zoom:70%;" />
 
