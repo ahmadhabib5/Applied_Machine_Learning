@@ -1,7 +1,7 @@
 # Laporan Proyek Machine Learning - Ahmad Habib Husaini
 
 ## Domain Project
-Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai kesehatan dengan judul proyek **Prediction positive or negative diabetes**". 
+Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai kesehatan dengan judul proyek **Prediction positive or negative diabetes**. 
 
 - Pendahuluan
   
@@ -55,7 +55,7 @@ Berikut rangkuman `statistik deskriptif` dari fitur dalam dataset:
 
 Berikut `Visualisasi` tiap kolom : 
 
-<img src="image/categorical1.png" style="zoom:70%;" /> <br>
+<img src="image/categorical1.png" style="zoom:70%;" /> 
 <img src="image/categorical2.png" style="zoom:70%;" /> 
 <img src="image/numeric1.png" style="zoom:70%;" /> <br>
 <img src="image/numeric2.png" style="zoom:70%;" /> 
