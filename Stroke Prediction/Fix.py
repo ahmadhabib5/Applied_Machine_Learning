@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Analysis Predictive: Prediction positive or negative diabetes
+# # Analysis Predictive: Prediction positive or negative stroke
 
 # ### Oleh : [Ahmad Habib Husaini](https://www.linkedin.com/in/ahmad-habib-husaini-1705711b0/)
 # 

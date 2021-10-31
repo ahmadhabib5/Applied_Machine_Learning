@@ -1,7 +1,7 @@
 # Laporan Proyek Machine Learning - Ahmad Habib Husaini
 
 ## Domain Project
-Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai kesehatan dengan judul proyek **Prediction positive or negative diabetes**. 
+Domain proyek yang dipilih dalam proyek machine learning ini adalah mengenai kesehatan dengan judul proyek **Prediction positive or negative stroke**. 
 
 - Pendahuluan
   
