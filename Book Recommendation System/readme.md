@@ -29,7 +29,7 @@ Berdasarkan *problem statement* diatas, berikut tujuan dari proyek ini:
 
 Berikut tahapan pada proyek ini dalam membuat *recommendation system* pada buku berdasarkan atribut:
 
-<img src="D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\alur.png" style="zoom: 80%;" />
+<img src="image\alur.png" style="zoom: 80%;" />
 
 1. Data Acquisition
 
@@ -90,11 +90,11 @@ Berikut tahapan pada proyek ini dalam membuat *recommendation system* pada buku 
 
    Pada tahapan ini proses pembuatan *recommendation system* dibuat dengan memanfaatkan *cosine similarity*. *Cosine similarity* merupakan salah satu konsep dalam aljabar linier untuk menghitung cosinus dari sudut antara dua *vector*, namun dapat digunakan untuk mengukur kemiripan pada suatu dokumen dan salah satunya seperti pada proyek ini menghitung kemiripan buku berdasarkan atributnya. Berikut formula *cosine similarity*.
 
-   <img src="D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\cosine similarity.png" style="zoom:80%;" />
+   <img src="image\cosine similarity.png" style="zoom:80%;" />
 
    Sebagai contoh mengukur kemiripan teks satu dan dua yang telah di *encode* dengan *bag of word*, 
 
-   ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\cosine similarity example.png)
+   ![](image\cosine similarity example.png)
 
    Rentang nilai dari *cosine similarity* sama dengan rentang nilai cosinus yakni dari -1 hingga 1. Jika nilai *cosine similarity* mendekati dengan nol maka dapat dikatakan kedua dokumen tersebut sangat mirip dan jika nilai dari *cosine similarity* semakin jauh dari nol entah itu mendekat ke 1 atau -1 maka kedua dokumen tersebut dapat dikatakan tidak mirip. Untuk penjelasan lebih lanjut akan dibahas pada tahapan *modeling*
 
@@ -104,7 +104,7 @@ Berikut tahapan pada proyek ini dalam membuat *recommendation system* pada buku 
 
 ## Data Understanding
 
-![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\kaggle_dataset.png)
+![](image\kaggle_dataset.png)
 
 Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/book-recommendation-dataset) berisikan tiga dataset yakni dataset [*book*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Books.csv) dengan jumlah data 271360 baris dan 8 kolom, dataset [*rating*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Ratings.csv) dengan jumlah data 1149780 baris dan 3 kolom dan dataset [*user*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Users.csv) dengan jumlah data 278858 baris dan 4 kolom. Berikut rincian data pada masing-masing dataset:
 
@@ -130,11 +130,11 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Tipe Data
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\tipe data book.png)
+  ![](image\tipe data book.png)
 
 - #### Informasi Statistical 
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\statistical_book.png)
+  ![](image\statistical_book.png)
 
 
 
@@ -151,15 +151,15 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Missing Value
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\missing_valu_rating.png)
+  ![](image\missing_valu_rating.png)
 
 - #### Informasi Tipe Data
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\tipe_data_rating.png)
+  ![](image\tipe_data_rating.png)
 
 - #### Informasi Statistical 
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\statistical_rating.png)
+  ![](image\statistical_rating.png)
 
 ### Dataset User
 
@@ -174,14 +174,13 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Missing Value
 
-  ![image-20211106111804739](C:\Users\WIN10\AppData\Roaming\Typora\typora-user-images\image-20211106111804739.png)
+  ![](image\missing_valu_user.png)
 
 - #### Informasi Tipe Data
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\tipe_data_user.png)
+  ![](image\tipe_data_user.png)
 
 - #### Informasi Statistical 
-
 
 Berikut `visualisasi` dari ketiga dataset tersebut:
 
@@ -208,33 +207,31 @@ Kesimpulan yang dapat diambil pada tahapan ini adalah :
     - london menjadi kota user terbanyak sebanyak 139187 user
     - Kota dengan user terbanyak adalah London
 
-
 ## Data Preparation
 
 Seperti yang sudah dipaparkan pada *solution approach*, berikut rincian dari masing-masing tahapan:
 
 - Pada proyek ini seperti yang sudah dipaparkan pada tahapan *business understanding* bahwa *recommendation systems* dibuat berdasarkan kemiripan atribut dari buku, oleh karenanya dataset yang digunakan adalah dataset buku (book.csv). Pada dataset buku kolom yang dipilih untuk dijadikan sebagai atribut adalah ISBN, judul, penulis , dan tahun terbit dari buku. Berikut dataset yang akan digunakan:
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\dataset_fix.png)
+  ![](image\dataset_fix.png)
 
 - Setelah dipilih beberapa kolom untuk dijadikan atribut, cek apakah dataset yang akan digunakan memiliki *missing value*.
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\missing_value_dataset_fix.png)
+  ![](image\missing_value_dataset_fix.png)
 
   Karena *missing value* hanya sedikit yakni 1 maka tidak mengapa untuk menghapus data tersebut. Kemudian selain menghapus data kosong hapus juga data duplikat. Untuk implementasi kedalam *code* dapat dilihat pada gambar dibawah ini.
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\drop_missing_value_duplicate.png)
+  ![](image\drop_missing_value_duplicate.png)
 
 - Setelah membersihkan dengan menghapus data kosong atau *missing value* maka kolom yang dipilih untuk dijadikan atribut akan digabungkan menjadi satu kolom berupa string yang dipisahkan dengan spasi, kolom tersebut akan diberi nama 'metadata'. Sebagai contoh data pertama maka metadatanya adalah "0195153448 Classical Mythology Mark P.P. Morford 2002". Untuk implementasinya sangat mudah, dapat dilihat pada gambar dibawah ini.
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\metadata.png)
+  ![](image\metadata.png)
 
   Selanjutnya kolom metadata tersebutlah yang akan digunakan untuk membuat *recommendation system*.
 
 - Encoding kolom metadata.
 
   Pada tahapan ini dilakukan dua pendekatan encoding yakni dengan *bag of word* dan *tf-idf* yang penjelasannya sudah dipaparkan pada tahapan **solution* approach*.
-
 
 ## Modeling
 
@@ -254,7 +251,7 @@ Setela melakukan tahapan preparation atau preprocessing maka tahapan *modeling* 
 
 5. Membungkus *code*  proses 1 sampai 4 menjadi sebuah *class* agar lebih mudah untuk digunakan kembali. berikut *code* yang telah dibungkus menjadi sebuah *class*.
 
-   ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\class_recsys.png)
+   ![](image\class_recsys.png)
 
    Kelebihan dari metode ini adalah mudah dalam implementasi sedangkan kekurangannya terkadang kurang akurat.
 
@@ -262,43 +259,41 @@ Pada proyek ini pembuatan model dilakukan dengan dua strategi yakni dengan top l
 
 - Model dengan *bag of word*
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling1.png)
+  ![](image\modeling1.png)
 
   Karena *code* sudah dibungkus menjadi sebuah *class* maka implementasinya cukup mudah seperti gambar diatas. Setelah model dilatih tiba saatnya untuk melakukan *sanity check*. Data yang ditampilkan top 5 rekomendasi dari index ke 100 dan 1000.
 
   1. Data ke-100
 
-     ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling1_1.png)
+     ![](image\modeling1_1.png)
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 43 persen.
 
   2. Data ke-1000
 
-     ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling1_2.png)
+     ![](image\modeling1_2.png)
 
      Hasil rekomendasi dari data ke-1000 memiliki score 73 persen
 
 - Model dengan Tf-idf
 
-  ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling2.png)
+  ![](image\modeling2.png)
 
   Sama seperti pada *bag of word* data yang ditampilkan adalah data ke-100 dan data ke-1000.
 
   1. Data ke-100
 
-     ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling2_1.png)
+     ![](image\modeling2_1.png)
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 49 persen.
 
   2. Data ke-1000
 
-     ![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\modeling2_2.png)
+     ![](image\modeling2_2.png)
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 83 persen.
      
-     Jika dilihat dari dua contoh sampel data terlihat model dengan *encoding* *tf-idf* lebih baik. Namun bagaimana jika sampel diperbanyak ? Pada tahap ini belum bisa disimpulkan model mana yang akan diajukan.
-
-  
+     Jika dilihat dari dua contoh sampel data terlihat model dengan *encoding* *tf-idf* lebih baik. Namun bagaimana jika sampel diperbanyak ? Pada tahap ini belum bisa disimpulkan model mana yang akan diajukan.  
 
 ## Evaluation
 
@@ -311,10 +306,9 @@ Seperti yang sudah dipaparkan pada tahapan *solution approach* *metrics* yang ak
 
 Pada proyek ini jumlah data buku sebanyak kurang lebih 270 ribu data, akan sangat lama jika menggunakan seluruh dara untuk menghitung score dengan *intra similarity*. oleh karenanya digunakan lah beberapa sampel saja. Agar adil sampel data yang digunakan untuk mengukur performa kedua model akan sama yakni sebanyak 500 data. 
 
-![](D:\Pemrograman\Python\Dicoding\Submission_MLT2\image\score_akhir.png)
+![](image\score_akhir.png)
 
 Setelah dihitung score dengan 500 data berbeda sebanyak 2 kali model dengan *encoding bag of word* selalu mengungguli model dengan *encoding tf-idf* walau tidak signifikan. Maka pada proyek *recommendation system* buku berdasarkan kemiripan atribut ini model yang dipilih adalah model dengan *encoding bag of word*.
-
 
 ## Referensi
 1. [Dicoding](https://www.dicoding.com/academies/319) (2021). *Machine learning Terapan*
