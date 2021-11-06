@@ -182,6 +182,8 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Statistical 
 
+  <img src="image\statistical_user.png" style="zoom:150%;" />
+
 Berikut `visualisasi` dari ketiga dataset tersebut:
 
 <img src="image\visualisasi_book.png" style="zoom: 80%;" />
