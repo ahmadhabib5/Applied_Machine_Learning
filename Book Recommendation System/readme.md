@@ -1,13 +1,13 @@
 # Laporan Proyek Machine Learning - Ahmad Habib Husaini
 
 ## Daftar Isi
-- [Project Overview](## Project Overview)
-- [Business Understanding](## Business Understanding)
-- [Data Understanding](## Data Understanding)
-- [Data Preparation](## Data Preparation)
-- [Modeling](## Modeling)
-- [Evaluation](## Evaluation)
-- [Referensi](## Referensi)
+- [Project Overview](#project-overview)
+- [Business Understanding](#business-understanding)
+- [Data Understanding](#data-understanding)
+- [Data Preparation](#data-preparation)
+- [Modeling](#modeling)
+- [Evaluation](#evaluation)
+- [Referensi](#referensi)
 
 ## Project Overview
 
