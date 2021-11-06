@@ -90,11 +90,11 @@ Berikut tahapan pada proyek ini dalam membuat *recommendation system* pada buku 
 
    Pada tahapan ini proses pembuatan *recommendation system* dibuat dengan memanfaatkan *cosine similarity*. *Cosine similarity* merupakan salah satu konsep dalam aljabar linier untuk menghitung cosinus dari sudut antara dua *vector*, namun dapat digunakan untuk mengukur kemiripan pada suatu dokumen dan salah satunya seperti pada proyek ini menghitung kemiripan buku berdasarkan atributnya. Berikut formula *cosine similarity*.
 
-   <img src="image\cosine similarity.png" style="zoom:80%;" />
+   <img src="image\cosine_similarity.png" style="zoom:80%;" />
 
    Sebagai contoh mengukur kemiripan teks satu dan dua yang telah di *encode* dengan *bag of word*, 
 
-   ![](image\cosine similarity example.png)
+   <img src="image\cosine_similarity_example.png" style="zoom:80%;" />
 
    Rentang nilai dari *cosine similarity* sama dengan rentang nilai cosinus yakni dari -1 hingga 1. Jika nilai *cosine similarity* mendekati dengan nol maka dapat dikatakan kedua dokumen tersebut sangat mirip dan jika nilai dari *cosine similarity* semakin jauh dari nol entah itu mendekat ke 1 atau -1 maka kedua dokumen tersebut dapat dikatakan tidak mirip. Untuk penjelasan lebih lanjut akan dibahas pada tahapan *modeling*
 
@@ -104,7 +104,7 @@ Berikut tahapan pada proyek ini dalam membuat *recommendation system* pada buku 
 
 ## Data Understanding
 
-![](image\kaggle_dataset.png)
+<img src="image\kaggle_dataset.png" style="zoom:80%;" />
 
 Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/book-recommendation-dataset) berisikan tiga dataset yakni dataset [*book*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Books.csv) dengan jumlah data 271360 baris dan 8 kolom, dataset [*rating*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Ratings.csv) dengan jumlah data 1149780 baris dan 3 kolom dan dataset [*user*](https://www.kaggle.com/arashnic/book-recommendation-dataset?select=Users.csv) dengan jumlah data 278858 baris dan 4 kolom. Berikut rincian data pada masing-masing dataset:
 
@@ -126,15 +126,15 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Missing Value
 
-  ![](image\missing_value_book.png)
+  <img src="image\missing_value_book.png" style="zoom: 150%;" />
 
 - #### Informasi Tipe Data
 
-  ![](image\tipe data book.png)
+  <img src="image\tipe data book.png" style="zoom: 150%;" />
 
 - #### Informasi Statistical 
 
-  ![](image\statistical_book.png)
+  <img src="image\statistical_book.png" style="zoom: 150%;" />
 
 
 
@@ -151,15 +151,15 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Missing Value
 
-  ![](image\missing_valu_rating.png)
+  <img src="image\missing_valu_rating.png" style="zoom:150%;" />
 
 - #### Informasi Tipe Data
 
-  ![](image\tipe_data_rating.png)
+  <img src="image\tipe_data_rating.png" style="zoom:150%;" />
 
 - #### Informasi Statistical 
 
-  ![](image\statistical_rating.png)
+  <img src="image\statistical_rating.png" style="zoom:150%;" />
 
 ### Dataset User
 
@@ -174,25 +174,25 @@ Pada berkas yang diunduh pada tautan [berikut](https://www.kaggle.com/arashnic/b
 
 - #### Informasi Missing Value
 
-  ![](image\missing_valu_user.png)
+  <img src="image\missing_valu_user.png" style="zoom:150%;" />
 
 - #### Informasi Tipe Data
 
-  ![](image\tipe_data_user.png)
+  <img src="image\tipe_data_user.png" style="zoom:150%;" />
 
 - #### Informasi Statistical 
 
 Berikut `visualisasi` dari ketiga dataset tersebut:
 
-![](image\visualisasi_book.png)
+<img src="image\visualisasi_book.png" style="zoom: 80%;" />
 
-![](image\visualisasi_rating1.png)
+<img src="image\visualisasi_rating1.png" style="zoom:80%;" />
 
-![](image\visualisasi_rating2.png)
+<img src="image\visualisasi_rating2.png" style="zoom:80%;" />
 
-![](image\visualisasi_user1.png)
+<img src="image\visualisasi_user1.png" style="zoom:80%;" />
 
-![](image\visualisasi_user2.png)
+<img src="image\visualisasi_user2.png" style="zoom:80%;" />
 
 Kesimpulan yang dapat diambil pada tahapan ini adalah :
 1. Book
@@ -213,19 +213,19 @@ Seperti yang sudah dipaparkan pada *solution approach*, berikut rincian dari mas
 
 - Pada proyek ini seperti yang sudah dipaparkan pada tahapan *business understanding* bahwa *recommendation systems* dibuat berdasarkan kemiripan atribut dari buku, oleh karenanya dataset yang digunakan adalah dataset buku (book.csv). Pada dataset buku kolom yang dipilih untuk dijadikan sebagai atribut adalah ISBN, judul, penulis , dan tahun terbit dari buku. Berikut dataset yang akan digunakan:
 
-  ![](image\dataset_fix.png)
+  <img src="image\dataset_fix.png" style="zoom: 150%;" />
 
 - Setelah dipilih beberapa kolom untuk dijadikan atribut, cek apakah dataset yang akan digunakan memiliki *missing value*.
 
-  ![](image\missing_value_dataset_fix.png)
+  <img src="image\missing_value_dataset_fix.png" style="zoom:150%;" />
 
   Karena *missing value* hanya sedikit yakni 1 maka tidak mengapa untuk menghapus data tersebut. Kemudian selain menghapus data kosong hapus juga data duplikat. Untuk implementasi kedalam *code* dapat dilihat pada gambar dibawah ini.
 
-  ![](image\drop_missing_value_duplicate.png)
+  <img src="image\drop_missing_value_duplicate.png" style="zoom:150%;" />
 
 - Setelah membersihkan dengan menghapus data kosong atau *missing value* maka kolom yang dipilih untuk dijadikan atribut akan digabungkan menjadi satu kolom berupa string yang dipisahkan dengan spasi, kolom tersebut akan diberi nama 'metadata'. Sebagai contoh data pertama maka metadatanya adalah "0195153448 Classical Mythology Mark P.P. Morford 2002". Untuk implementasinya sangat mudah, dapat dilihat pada gambar dibawah ini.
 
-  ![](image\metadata.png)
+  <img src="image\metadata.png" style="zoom:150%;" />
 
   Selanjutnya kolom metadata tersebutlah yang akan digunakan untuk membuat *recommendation system*.
 
@@ -251,7 +251,7 @@ Setela melakukan tahapan preparation atau preprocessing maka tahapan *modeling* 
 
 5. Membungkus *code*  proses 1 sampai 4 menjadi sebuah *class* agar lebih mudah untuk digunakan kembali. berikut *code* yang telah dibungkus menjadi sebuah *class*.
 
-   ![](image\class_recsys.png)
+   <img src="image\class_recsys.png" style="zoom:80%;" />
 
    Kelebihan dari metode ini adalah mudah dalam implementasi sedangkan kekurangannya terkadang kurang akurat.
 
@@ -259,37 +259,37 @@ Pada proyek ini pembuatan model dilakukan dengan dua strategi yakni dengan top l
 
 - Model dengan *bag of word*
 
-  ![](image\modeling1.png)
+  <img src="image\modeling1.png" style="zoom:150%;" />
 
   Karena *code* sudah dibungkus menjadi sebuah *class* maka implementasinya cukup mudah seperti gambar diatas. Setelah model dilatih tiba saatnya untuk melakukan *sanity check*. Data yang ditampilkan top 5 rekomendasi dari index ke 100 dan 1000.
 
   1. Data ke-100
 
-     ![](image\modeling1_1.png)
+     <img src="image\modeling1_1.png" style="zoom:80%;" />
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 43 persen.
 
   2. Data ke-1000
 
-     ![](image\modeling1_2.png)
+     <img src="image\modeling1_2.png" style="zoom:80%;" />
 
      Hasil rekomendasi dari data ke-1000 memiliki score 73 persen
 
 - Model dengan Tf-idf
 
-  ![](image\modeling2.png)
+  <img src="image\modeling2.png" style="zoom:150%;" />
 
   Sama seperti pada *bag of word* data yang ditampilkan adalah data ke-100 dan data ke-1000.
 
   1. Data ke-100
 
-     ![](image\modeling2_1.png)
+     <img src="image\modeling2_1.png" style="zoom:80%;" />
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 49 persen.
 
   2. Data ke-1000
 
-     ![](image\modeling2_2.png)
+     <img src="image\modeling2_2.png" style="zoom:80%;" />
 
      Hasil rekomendasi dari data ke-100 ini memiliki score 83 persen.
      
@@ -306,7 +306,7 @@ Seperti yang sudah dipaparkan pada tahapan *solution approach* *metrics* yang ak
 
 Pada proyek ini jumlah data buku sebanyak kurang lebih 270 ribu data, akan sangat lama jika menggunakan seluruh dara untuk menghitung score dengan *intra similarity*. oleh karenanya digunakan lah beberapa sampel saja. Agar adil sampel data yang digunakan untuk mengukur performa kedua model akan sama yakni sebanyak 500 data. 
 
-![](image\score_akhir.png)
+<img src="image\score_akhir.png" style="zoom:150%;" />
 
 Setelah dihitung score dengan 500 data berbeda sebanyak 2 kali model dengan *encoding bag of word* selalu mengungguli model dengan *encoding tf-idf* walau tidak signifikan. Maka pada proyek *recommendation system* buku berdasarkan kemiripan atribut ini model yang dipilih adalah model dengan *encoding bag of word*.
 
